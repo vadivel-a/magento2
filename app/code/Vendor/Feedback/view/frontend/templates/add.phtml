@@ -1,0 +1,14 @@
+<h1>Add Feedback</h1>
+
+<form action="<?= $block->getUrl('feedback/save') ?>" method="post">
+    <label for="customer_name">Name:</label><br/>
+    <input type="text" id="customer_name" name="customer_name" required /><br/><br/>
+
+    <label for="customer_email">Email:</label><br/>
+    <input type="email" id="customer_email" name="customer_email" required /><br/><br/>
+
+    <label for="message">Message:</label><br/>
+    <textarea id="message" name="message" required></textarea><br/><br/>
+
+    <button type="submit">Submit</button>
+</form>

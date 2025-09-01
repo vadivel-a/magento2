@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Vendor\Feedback\Block\FeedbackList" name="feedback.list" template="Vendor_Feedback::list.phtml"/>
+            <block class="Vendor\Feedback\Block\FeedbackEdit" name="feedback.edit" template="Vendor_Feedback::edit.phtml"/>
         </referenceContainer>
     </body>
 </page>

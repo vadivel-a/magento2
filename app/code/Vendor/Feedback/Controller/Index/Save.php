@@ -20,11 +20,14 @@ class Save extends Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             try {
+                $id = isset($data['id']) ? (int)$data['id'] : null;
                 $feedback = $this->feedbackFactory->create();
-                $feedback->setData($data);
-                $feedback->save();
+                if ($id) {
+                    $feedback->load($id);
+                }
+                $feedback->setData($data)->save();
 
-                $this->messageManager->addSuccessMessage(__('Feedback submitted successfully.'));
+                $this->messageManager->addSuccessMessage(__('Feedback saved successfully.'));
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(__('Error while saving feedback.'));
             }

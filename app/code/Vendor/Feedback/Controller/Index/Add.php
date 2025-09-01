@@ -4,7 +4,7 @@ namespace Vendor\Feedback\Controller\Index;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 
-class Index extends Action
+class Add extends Action
 {
     public function execute()
     {

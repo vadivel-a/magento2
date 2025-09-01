@@ -1,0 +1,18 @@
+<?php /** @var \Vendor\Feedback\Block\FeedbackEdit $block */ ?>
+<?php $feedback = $block->getData('feedback'); ?>
+<h1>Edit Feedback</h1>
+
+<form action="<?= $block->getUrl('feedback/save') ?>" method="post">
+    <input type="hidden" name="id" value="<?= $feedback->getId() ?>" />
+
+    <label>Name:</label>
+    <input type="text" name="customer_name" value="<?= $block->escapeHtml($feedback->getCustomerName()) ?>" /><br/>
+
+    <label>Email:</label>
+    <input type="email" name="customer_email" value="<?= $block->escapeHtml($feedback->getCustomerEmail()) ?>" /><br/>
+
+    <label>Message:</label>
+    <textarea name="message"><?= $block->escapeHtml($feedback->getMessage()) ?></textarea><br/>
+
+    <button type="submit">Save</button>
+</form>

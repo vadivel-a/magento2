@@ -1,22 +1,22 @@
 <?php /** @var \Vendor\Feedback\Block\FeedbackList $block */ ?>
-<div class="feedback-list">
-    <h1>Customer Feedback</h1>
+<h1>Customer Feedback</h1>
+<p>
+    <a href="<?= $block->getUrl('feedback/add') ?>">Add Feedback</a>
+</p>
+<?php $items = $block->getFeedbackCollection(); ?>
 
-    <?php $items = $block->getFeedbackCollection(); ?>
-
-    <?php if ($items->getSize()): ?>
-        <ul class="items">
-            <?php foreach ($items as $item): ?>
-                <li class="item">
-                    <strong><?= $block->escapeHtml($item->getData('customer_name')) ?></strong>
-                    (<?= $block->escapeHtml($item->getData('customer_email')) ?>)
-                    <br/>
-                    <em><?= $block->escapeHtml($item->getData('created_at')) ?></em>
-                    <p><?= nl2br($block->escapeHtml($item->getData('message'))) ?></p>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <p>No feedback yet.</p>
-    <?php endif; ?>
-</div>
+<?php if ($items->getSize()): ?>
+    <ul>
+        <?php foreach ($items as $item): ?>
+            <li>
+                <b><?= $block->escapeHtml($item->getCustomerName()) ?></b> 
+                <?= $block->escapeHtml($item->getCustomerEmail()) ?><br/>
+                <?= $block->escapeHtml($item->getMessage()) ?><br/>
+                <a href="<?= $block->getUrl('feedback/edit/' . $item->getId()) ?>">Edit</a> | 
+                <a href="<?= $block->getUrl('feedback/delete/' . $item->getId()) ?>">Delete</a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <p>No feedback yet.</p>
+<?php endif; ?>
