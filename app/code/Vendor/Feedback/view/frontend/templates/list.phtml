@@ -1,0 +1,22 @@
+<?php /** @var \Vendor\Feedback\Block\FeedbackList $block */ ?>
+<div class="feedback-list">
+    <h1>Customer Feedback</h1>
+
+    <?php $items = $block->getFeedbackCollection(); ?>
+
+    <?php if ($items->getSize()): ?>
+        <ul class="items">
+            <?php foreach ($items as $item): ?>
+                <li class="item">
+                    <strong><?= $block->escapeHtml($item->getData('customer_name')) ?></strong>
+                    (<?= $block->escapeHtml($item->getData('customer_email')) ?>)
+                    <br/>
+                    <em><?= $block->escapeHtml($item->getData('created_at')) ?></em>
+                    <p><?= nl2br($block->escapeHtml($item->getData('message'))) ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>No feedback yet.</p>
+    <?php endif; ?>
+</div>
