@@ -1,0 +1,27 @@
+<form action="<?= $block->getFormAction() ?>" method="post">
+    <p>
+        <label><?= __('First name') ?></label><br/>
+        <input type="text" name="first_name" required />
+</p>
+    <p>
+        <label><?= __('Last name') ?></label><br/>
+        <input type="text" name="last_name" />
+    </p>
+    <p>
+        <label><?= __('Email') ?></label><br/>
+        <input type="email" name="email" required />
+    </p>
+    <p>
+        <label><?= __('Position') ?></label><br/>
+        <input type="text" name="position" />
+    </p>
+    <p>
+        <label><?= __('Department') ?></label><br/>
+        <input type="text" name="department" />
+    </p>
+    <p>
+        <br>
+        <button type="submit"><?= __('Save') ?></button>
+    </p>
+    <p><a href="<?= $block->getUrl('employee') ?>">← Back to Employee List</a></p>
+</form>

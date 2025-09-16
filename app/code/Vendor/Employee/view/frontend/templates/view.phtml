@@ -1,0 +1,18 @@
+<?php /** @var \Vendor\Employee\Block\View $block */ ?>
+<?php $employee = $block->getEmployee(); ?>
+<h1><?= $block->getCustomTitle(); ?></h1>
+<p>Dynamic Info: <?= $block->getExtraInfo(); ?></p>
+<p>Notes: <?= $block->getCustomNote(); ?></p>
+<p>IP: <?= $block->getViewerIp(); ?></p>
+<p>Page label: <?= $block->getPageLabel(); ?></p>
+<?php if ($employee): ?>
+    <h1><?= $block->escapeHtml($employee->getFirstName() . ' ' . $employee->getLastName()) ?></h1>
+    <p><strong>Email:</strong> <?= $block->escapeHtml($employee->getEmail()) ?></p>
+    <p><strong>Position:</strong> <?= $block->escapeHtml($employee->getPosition()) ?></p>
+    <p><strong>Department:</strong> <?= $block->escapeHtml($employee->getDepartment()) ?></p>
+    <p><strong>Created At:</strong> <?= $employee->getCreatedAt() ?></p>
+
+    <p><a href="<?= $block->getUrl('employee') ?>">← Back to Employee List</a></p>
+<?php else: ?>
+    <p><?= __('Employee not found.') ?></p>
+<?php endif; ?>

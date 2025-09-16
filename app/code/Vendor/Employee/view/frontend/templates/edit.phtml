@@ -1,0 +1,40 @@
+
+<form action="<?= $block->getFormAction() ?>" method="post">
+    <!-- Hidden field to store employee ID -->
+    <input type="hidden" name="employee_id" value="<?= $block->getEmployee()->getId() ?>" />
+
+    <p>
+        <label><?= __('First name') ?></label><br/>
+        <input type="text" name="first_name" required 
+               value="<?= $block->escapeHtml($block->getEmployee()->getFirstName()) ?>" />
+    </p>
+
+    <p>
+        <label><?= __('Last name') ?></label><br/>
+        <input type="text" name="last_name" 
+               value="<?= $block->escapeHtml($block->getEmployee()->getLastName()) ?>" />
+    </p>
+
+    <p>
+        <label><?= __('Email') ?></label><br/>
+        <input type="email" name="email" required 
+               value="<?= $block->escapeHtml($block->getEmployee()->getEmail()) ?>" />
+    </p>
+
+    <p>
+        <label><?= __('Position') ?></label><br/>
+        <input type="text" name="position" 
+               value="<?= $block->escapeHtml($block->getEmployee()->getPosition()) ?>" />
+    </p>
+
+    <p>
+        <label><?= __('Department') ?></label><br/>
+        <input type="text" name="department" 
+               value="<?= $block->escapeHtml($block->getEmployee()->getDepartment()) ?>" />
+    </p>
+
+    <p>
+        <button type="submit"><?= __('Save') ?></button>
+    </p>
+    <p><a href="<?= $block->getUrl('employee') ?>">← Back to Employee List</a></p>
+</form>

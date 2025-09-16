@@ -1,0 +1,36 @@
+
+<p><a href="<?= $block->getAddUrl() ?>"><?= __('Add Employee') ?></a></p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+        <tr>
+            <th><?= __('ID') ?></th>
+            <th><?= __('First Name') ?></th>
+            <th><?= __('Last Name') ?></th>
+            <th><?= __('Email') ?></th>
+            <th><?= __('Position') ?></th>
+            <th><?= __('Department') ?></th>
+            <th><?= __('Created At') ?></th>
+            <th><?= __('Action') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($block->getCollection() as $_item): ?>
+        <tr>
+            <td><?= $_item->getId() ?></td>
+            <td><?= $block->escapeHtml($_item->getFirstName()) ?></td>
+            <td><?= $block->escapeHtml($_item->getLastName()) ?></td>
+            <td><?= $block->escapeHtml($_item->getEmail()) ?></td>
+            <td><?= $block->escapeHtml($_item->getPosition()) ?></td>
+            <td><?= $block->escapeHtml($_item->getDepartment()) ?></td>
+            <td><?= $_item->getCreatedAt() ?></td>
+
+            <td>
+                <a href="<?= $block->getViewUrl($_item->getId()) ?>"><?= __('View') ?></a> |
+                <a href="<?= $block->getEditUrl($_item->getId()) ?>"><?= __('Edit') ?></a> |
+                <a href="<?= $block->getDeleteUrl($_item->getId()) ?>"><?= __('Delete') ?></a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

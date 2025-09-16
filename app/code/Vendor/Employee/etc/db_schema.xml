@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="vendor_employee" resource="default" engine="innodb" comment="Employee Info">
+        <column xsi:type="int" name="employee_id" unsigned="true" nullable="false" identity="true" comment="Employee ID"/>
+        <column xsi:type="varchar" name="first_name" nullable="false" length="255" comment="First Name"/>
+        <column xsi:type="varchar" name="last_name" nullable="true" length="255" comment="Last Name"/>
+        <column xsi:type="varchar" name="email" nullable="false" length="255" comment="Email"/>
+        <column xsi:type="varchar" name="position" nullable="true" length="255" comment="Position"/>
+        <column xsi:type="varchar" name="department" nullable="true" length="255" comment="Department"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="employee_id"/>
+        </constraint>
+        <index referenceId="VENDOR_EMPLOYEE_EMAIL_IDX" indexType="btree">
+            <column name="email"/>
+        </index>
+    </table>
+</schema>
