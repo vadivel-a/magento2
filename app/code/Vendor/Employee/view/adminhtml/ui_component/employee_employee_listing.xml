@@ -1,0 +1,128 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Ui:etc/ui_configuration.xsd"
+         name="employee_employee_listing">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">employee_employee_listing.employee_employee_listing_data_source</item>
+            <item name="deps" xsi:type="string">employee_employee_listing.employee_employee_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">employee_employee_columns</item>
+    </argument>
+
+    <dataSource name="employee_employee_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Vendor\Employee\Ui\Component\Listing\DataProvider</argument>
+            <argument name="name" xsi:type="string">employee_employee_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">employee_id</argument>
+            <argument name="requestFieldName" xsi:type="string">employee_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <!-- 👇 force the correct namespace here -->
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">employee_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <!-- 👇 toolbar with paging -->
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected employees?</message>
+                    </confirm>
+                    <url path="employee/employee/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+
+    </listingToolbar>
+
+    <columns name="employee_employee_columns">
+
+        <!-- Checkbox column for selecting multiple rows -->
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>employee_id</indexField>
+            </settings>
+        </selectionsColumn>
+
+        <column name="employee_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="first_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">First Name</label>
+            </settings>
+        </column>
+        <column name="last_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Last Name</label>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="position">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Position</label>
+            </settings>
+        </column>
+        <column name="department">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Department</label>
+            </settings>
+        </column>
+        <column name="created_at">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+        <column name="updated_at">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Updated At</label>
+            </settings>
+        </column>
+
+        <!-- Action column -->
+        <actionsColumn name="actions" class="Vendor\Employee\Ui\Component\Listing\Column\EmployeeActions">
+            <settings>
+                <indexField>employee_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

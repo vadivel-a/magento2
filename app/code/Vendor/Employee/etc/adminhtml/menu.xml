@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+        <add id="Vendor_Employee::employee_root"
+             title="Employee Management"
+             module="Vendor_Employee"
+             sortOrder="10"
+             resource="Vendor_Employee::employee_root"/>
+
+        <add id="Vendor_Employee::employee"
+             title="Employees"
+             module="Vendor_Employee"
+             sortOrder="20"
+             parent="Vendor_Employee::employee_root"
+             action="employee/employee/index"
+             resource="Vendor_Employee::employee"/>
+    </menu>
+</config>
