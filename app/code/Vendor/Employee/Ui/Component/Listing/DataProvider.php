@@ -22,7 +22,7 @@ class DataProvider extends AbstractDataProvider
     }
 
     /**
-     * Apply filters from UI (including search box).
+     * Apply filters from UI (search + field filters).
      */
     public function addFilter(Filter $filter)
     {
@@ -32,9 +32,9 @@ class DataProvider extends AbstractDataProvider
                 $this->collection->addFieldToFilter(
                     ['first_name', 'last_name', 'email'],
                     [
-                        ['like' => '%' . $value . '%'],
-                        ['like' => '%' . $value . '%'],
-                        ['like' => '%' . $value . '%']
+                        ['like' => "%$value%"],
+                        ['like' => "%$value%"],
+                        ['like' => "%$value%"]
                     ]
                 );
             }
@@ -45,6 +45,23 @@ class DataProvider extends AbstractDataProvider
                 [$condition => $filter->getValue()]
             );
         }
+    }
+
+    /**
+     * Sorting (for backend grid columns).
+     */
+    public function addOrder($field, $direction)
+    {
+        $this->collection->setOrder($field, $direction);
+    }
+
+    /**
+     * Pagination (for backend grid).
+     */
+    public function setLimit($offset, $size)
+    {
+        $this->collection->setPageSize($size);
+        $this->collection->setCurPage($offset);
     }
 
     /**
@@ -59,7 +76,7 @@ class DataProvider extends AbstractDataProvider
 
         return [
             'totalRecords' => $this->collection->getSize(),
-            'items' => $items
+            'items'        => $items
         ];
     }
 }

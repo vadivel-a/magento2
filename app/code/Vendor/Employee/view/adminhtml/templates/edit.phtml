@@ -1,0 +1,55 @@
+<form action="<?= $block->getFormAction() ?>" method="post">
+    <?= $block->getBlockHtml('formkey') ?>
+
+    <input type="hidden" name="employee_id"
+           value="<?= $block->escapeHtml($block->getEmployee()->getId()) ?>" />
+
+    <div class="admin__field">
+        <label class="admin__field-label"><?= __('First Name') ?></label>
+        <div class="admin__field-control">
+            <input type="text" name="first_name" class="admin__control-text" required
+                   value="<?= $block->escapeHtml($block->getEmployee()->getFirstName()) ?>" />
+        </div>
+    </div>
+
+    <div class="admin__field">
+        <label class="admin__field-label"><?= __('Last Name') ?></label>
+        <div class="admin__field-control">
+            <input type="text" name="last_name" class="admin__control-text"
+                   value="<?= $block->escapeHtml($block->getEmployee()->getLastName()) ?>" />
+        </div>
+    </div>
+
+    <div class="admin__field">
+        <label class="admin__field-label"><?= __('Email') ?></label>
+        <div class="admin__field-control">
+            <input type="email" name="email" class="admin__control-text" required
+                   value="<?= $block->escapeHtml($block->getEmployee()->getEmail()) ?>" />
+        </div>
+    </div>
+
+    <div class="admin__field">
+        <label class="admin__field-label"><?= __('Position') ?></label>
+        <div class="admin__field-control">
+            <input type="text" name="position" class="admin__control-text"
+                   value="<?= $block->escapeHtml($block->getEmployee()->getPosition()) ?>" />
+        </div>
+    </div>
+
+    <div class="admin__field">
+        <label class="admin__field-label"><?= __('Department') ?></label>
+        <div class="admin__field-control">
+            <input type="text" name="department" class="admin__control-text"
+                   value="<?= $block->escapeHtml($block->getEmployee()->getDepartment()) ?>" />
+        </div>
+    </div>
+
+    <div class="admin__field">
+        <button type="submit" class="action-default scalable save primary">
+            <span><?= __('Save Employee') ?></span>
+        </button>
+        <a href="<?= $block->getUrl('employee/employee/index') ?>" class="action-default back">
+            ← <?= __('Back to Employee List') ?>
+        </a>
+    </div>
+</form>

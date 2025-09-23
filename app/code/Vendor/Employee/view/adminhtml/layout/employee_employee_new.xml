@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <!-- Attach your form/container block here -->
+        <referenceContainer name="content">
+            <block class="Vendor\Employee\Block\Adminhtml\Edit"
+                   name="employee_employee_edit"/>
+        </referenceContainer>
+    </body>
+</page>

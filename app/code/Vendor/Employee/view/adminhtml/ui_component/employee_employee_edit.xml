@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Ui:etc/ui_configuration.xsd"
+      name="employee_employee_edit_form">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">employee_employee_edit_form.employee_employee_edit_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Employee Information</item>
+    </argument>
+
+    <dataSource name="employee_employee_edit_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Vendor\Employee\Ui\Component\Form\EmployeeDataProvider</argument>
+            <argument name="name" xsi:type="string">employee_employee_edit_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">employee_id</argument>
+            <argument name="requestFieldName" xsi:type="string">employee_id</argument>
+        </argument>
+    </dataSource>
+
+    <fieldset name="general">
+        <field name="first_name">
+            <settings>
+                <dataType>text</dataType>
+                <formElement>input</formElement>
+                <label translate="true">First Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="last_name">
+            <settings>
+                <dataType>text</dataType>
+                <formElement>input</formElement>
+                <label translate="true">Last Name</label>
+            </settings>
+        </field>
+        <field name="email">
+            <settings>
+                <dataType>text</dataType>
+                <formElement>input</formElement>
+                <label translate="true">Email</label>
+                <validation>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="position">
+            <settings>
+                <dataType>text</dataType>
+                <formElement>input</formElement>
+                <label translate="true">Position</label>
+            </settings>
+        </field>
+        <field name="department">
+            <settings>
+                <dataType>text</dataType>
+                <formElement>input</formElement>
+                <label translate="true">Department</label>
+            </settings>
+        </field>
+    </fieldset>
+</form>
