@@ -3,18 +3,39 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 
     <menu>
+        <!-- Root menu -->
         <add id="Vendor_Employee::employee_root"
              title="Employee Management"
              module="Vendor_Employee"
              sortOrder="10"
              resource="Vendor_Employee::employee_root"/>
 
-        <add id="Vendor_Employee::employee"
+        <!-- Employee list -->
+        <add id="Vendor_Employee::employee_list"
              title="Employees"
              module="Vendor_Employee"
              sortOrder="20"
              parent="Vendor_Employee::employee_root"
              action="employee/employee/index"
-             resource="Vendor_Employee::employee"/>
+             resource="Vendor_Employee::employee_list"/>
+
+        <!-- Add new employee -->
+        <add id="Vendor_Employee::employee_new"
+             title="Add New"
+             module="Vendor_Employee"
+             sortOrder="30"
+             parent="Vendor_Employee::employee_root"
+             action="employee/employee/new"
+             resource="Vendor_Employee::employee_new"/>
+
+        <!-- NEW: Static Page -->
+        <add id="Vendor_Employee::static_page"
+             title="About Module"
+             module="Vendor_Employee"
+             sortOrder="40"
+             parent="Vendor_Employee::employee_root"
+             action="employee/staticpage/index"
+             resource="Vendor_Employee::static_page"/>
+    
     </menu>
 </config>
