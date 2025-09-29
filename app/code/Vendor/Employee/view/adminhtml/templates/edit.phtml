@@ -39,8 +39,19 @@
     <div class="admin__field">
         <label class="admin__field-label"><?= __('Department') ?></label>
         <div class="admin__field-control">
-            <input type="text" name="department" class="admin__control-text"
-                   value="<?= $block->escapeHtml($block->getEmployee()->getDepartment()) ?>" />
+            <?php $departments = $block->getDepartmentOptions();
+            
+            ?>
+            <?php if (!empty($departments) && is_array($departments)): ?>
+                <select name="department" class="admin__control-select">
+                    <?php foreach ($departments as $value => $label): ?>
+                        <option value="<?= $block->escapeHtml($value) ?>"
+                            <?= ($block->getEmployee()->getDepartment() == $value) ? 'selected' : '' ?>>
+                            <?= $block->escapeHtml($label) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            <?php endif; ?>
         </div>
     </div>
 

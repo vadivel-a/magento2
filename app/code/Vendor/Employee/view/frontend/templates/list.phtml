@@ -22,7 +22,10 @@
             <td><?= $block->escapeHtml($_item->getLastName()) ?></td>
             <td><?= $block->escapeHtml($_item->getEmail()) ?></td>
             <td><?= $block->escapeHtml($_item->getPosition()) ?></td>
-            <td><?= $block->escapeHtml($_item->getDepartment()) ?></td>
+            <td>
+                <?php $departments = $block->getDepartmentOptions(); ?>
+                <?= isset($departments[$_item->getDepartment()]) ? $departments[$_item->getDepartment()] : __('N/A') ?>
+            </td>
             <td><?= $_item->getCreatedAt() ?></td>
 
             <td>

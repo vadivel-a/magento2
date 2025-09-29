@@ -17,7 +17,18 @@
     </p>
     <p>
         <label><?= __('Department') ?></label><br/>
-        <input type="text" name="department" />
+        <?php $departments = $block->getDepartmentOptions();
+        
+        ?>
+        <?php if (!empty($departments) && is_array($departments)): ?>
+            <select name="department" class="admin__control-select">
+                <?php foreach ($departments as $value => $label): ?>
+                    <option value="<?= $block->escapeHtml($value) ?>" >
+                        <?= $block->escapeHtml($label) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        <?php endif; ?>
     </p>
     <p>
         <br>

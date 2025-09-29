@@ -3,17 +3,21 @@ namespace Vendor\Employee\Block;
 
 use Magento\Framework\View\Element\Template;
 use Vendor\Employee\Model\ResourceModel\Employee\CollectionFactory;
+use Vendor\Employee\Model\Config\Source\DepartmentOptions;
 
 class EmployeeList extends Template
 {
     protected $collectionFactory;
+    protected $departmentOptions;
 
     public function __construct(
         Template\Context $context,
         CollectionFactory $collectionFactory,
+        DepartmentOptions $departmentOptions,
         array $data = []
     ) {
         parent::__construct($context, $data);
+        $this->departmentOptions = $departmentOptions;
         $this->collectionFactory = $collectionFactory;
     }
 
@@ -42,5 +46,10 @@ class EmployeeList extends Template
     public function getViewUrl($id)
     {
         return $this->getUrl('employee/index/view', ['id' => $id]);
+    }
+
+    public function getDepartmentOptions(): array
+    {
+        return $this->departmentOptions->toOptionArray();
     }
 }

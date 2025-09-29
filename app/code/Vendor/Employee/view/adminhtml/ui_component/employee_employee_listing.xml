@@ -104,12 +104,16 @@
                 <label translate="true">Position</label>
             </settings>
         </column>
-        <column name="department">
+
+
+        <column name="department" class="Vendor\Employee\Ui\Component\Listing\Column\Department">
             <settings>
-                <filter>text</filter>
+                <filter>select</filter>
+                <dataType>select</dataType>
                 <label translate="true">Department</label>
             </settings>
         </column>
+
         <column name="created_at">
             <settings>
                 <filter>dateRange</filter>
